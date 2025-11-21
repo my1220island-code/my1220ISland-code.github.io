@@ -1,3 +1,157 @@
-# KS1220ISland : Minecraft 1.8.8 Shader Client Make
-# Add Mods (none)
-https://my1220ISland-code.github.io
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Shader Client Launcher</title>
+<style>
+body {
+  margin:0; padding:0;
+  background:linear-gradient(135deg,#0b0d12,#121826,#1a2336);
+  font-family:"Segoe UI", sans-serif;
+  color:white;
+  display:flex;
+  height:100vh;
+  overflow:hidden;
+}
+
+.sidebar {
+  width:240px;
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(12px);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding-top:35px;
+  gap:15px;
+  box-shadow:3px 0 15px rgba(0,0,0,0.4);
+}
+
+.logo {
+  width:160px;
+  margin-bottom:15px;
+  filter:drop-shadow(0 0 12px rgba(30,144,255,0.6));
+}
+
+/* --- メイン中心配置を強化 --- */
+.content {
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding-bottom:70px;
+}
+
+.launch-title {
+  font-size:38px;
+  font-weight:bold;
+  margin-bottom:18px;
+  text-shadow:0 0 12px rgba(255,255,255,0.4);
+}
+
+.version-select {
+  margin-top:20px;
+  padding:12px;
+  font-size:19px;
+  width:240px;
+  border-radius:8px;
+  border:none;
+  background:#2c3142;
+  color:white;
+  cursor:pointer;
+  box-shadow:0 0 8px rgba(0,0,0,0.5) inset;
+}
+
+.launch-btn {
+  padding:18px 60px;
+  font-size:28px;
+  border:none;
+  border-radius:10px;
+  background:#1e90ff;
+  cursor:pointer;
+  color:white;
+  font-weight:bold;
+  box-shadow:0 0 20px rgba(30,144,255,0.5);
+  transition:0.2s;
+  margin-top:30px;
+}
+.launch-btn:hover { transform:scale(1.08); background:#3ea0ff; }
+
+.tab {
+  width:85%;
+  padding:14px 18px;
+  cursor:pointer;
+  border-radius:10px;
+  transition:0.25s;
+  font-size:17px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.tab:hover { background:rgba(255,255,255,0.07); transform:translateX(4px); }
+.tab.active {
+  background:rgba(30,144,255,0.35);
+  box-shadow:0 0 8px rgba(30,144,255,0.6);
+}
+
+/* 起動演出 */
+.smoke {
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background:rgba(0,0,0,0.75);
+  backdrop-filter:blur(6px);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  opacity:0;
+  pointer-events:none;
+  transition:0.3s;
+}
+.loading-text {
+  font-size:38px;
+  opacity:0;
+  animation:fadein 1s forwards infinite alternate;
+}
+
+@keyframes fadein { from{opacity:0.3;} to{opacity:1;} }
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+  <img class="logo" src="" alt="shader-logo">
+  <div class="tab active">🏠 Home</div>
+  <div class="tab">📰 News</div>
+  <div class="tab">⚙ Settings</div>
+  <div class="tab">🎨 Skins</div>
+  <div class="tab">📦 Mods</div>
+</div>
+
+<div class="content">
+  <div class="launch-title">Shader Client Launcher</div>
+  <select class="version-select" id="versionSelect">
+    <option value="1.8.8" selected>Minecraft 1.8.8</option>
+  </select>
+  <button class="launch-btn" id="launchBtn">PLAY</button>
+</div>
+
+<div class="smoke" id="smoke">
+  <div class="loading-text">Launching...</div>
+</div>
+
+<script>
+document.getElementById("launchBtn").addEventListener("click", () => {
+  document.getElementById("smoke").style.opacity = "1";
+  document.getElementById("smoke").style.pointerEvents = "auto";
+
+  setTimeout(() => {
+    window.location.href = "Minecraft_1.8.8_WASM.html";
+  }, 1200);
+});
+</script>
+
+</body>
+</html>

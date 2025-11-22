@@ -75,15 +75,14 @@ document.getElementById("launchBtn").addEventListener("click", () => {
   smoke.style.opacity = "1";
   smoke.style.pointerEvents = "auto";
 
-  // GitHub Pages のURLを開く
+  // GitHub Pages のURLを同じタブで開く
   const url = "https://my1220ISland-code.github.io/Minecraft_1.8.8_WASM.html";
   
   setTimeout(() => {
-    smoke.style.opacity = "0";
-    smoke.style.pointerEvents = "none";
-    window.open(url, "_blank"); // 新しいタブで開く
-  }, 1000); // 1秒後に開くアニメーション
+    window.location.href = url; // 同じタブで遷移
+  }, 1000); // アニメーション用に少し待機
 });
+
 
     } else if(name === "updateNews") {
       contentArea.innerHTML = '<h2>Update News</h2><div class="news-box" id="newsBox"></div>';
@@ -125,4 +124,5 @@ document.getElementById("launchBtn").addEventListener("click", () => {
 </script>
 </body>
 </html>
+
 
